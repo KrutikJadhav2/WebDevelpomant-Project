@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Test</title>
+</head>
+<body>
+    <h1>Audio Test</h1>
+    
+    <!-- Basic audio controls for testing -->
+    <audio id="audioPlayer" controls>
+        <source id="audioSource" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Test buttons -->
+    <div>
+        <button onclick="playFirstSong()">Play First Song</button>
+        <button onclick="testAudioPath()">Test Audio Path</button>
+    </div>
+
+    <!-- Display current path for debugging -->
+    <div id="currentPath"></div>
+    <div id="errorMessage" style="color: red;"></div>
+
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
+        const pathDisplay = document.getElementById('currentPath');
+        const errorDisplay = document.getElementById('errorMessage');
+
+        // Test function to play first song
+        function playFirstSong() {
+            try {
+                // Try both path formats
+                const paths = [
+                    'assets/songs/ncs/song.mp3',  // Relative path
+                    '/assets/songs/ncs/song.mp3'   // Root-relative path
+                ];
+
+                paths.forEach((path, index) => {
+                    pathDisplay.innerHTML += `<div>Testing path ${index + 1}: ${path}</div>`;
+                    
+                    // Create a new Audio object for each test
+                    const testAudio = new Audio(path);
+                    
+                    testAudio.addEventListener('canplaythrough', () => {
+                        pathDisplay.innerHTML += `<div style="color: green">✓ Path ${index + 1} is valid!</div>`;
+                    });
+
+                    testAudio.addEventListener('error', (e) => {
+                        pathDisplay.innerHTML += `<div style="color: red">✗ Path ${index + 1} failed: ${e.target.error.message}</div>`;
+                    });
+                });
+            } catch (error) {
+                errorDisplay.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        // Test function to check audio path
+        function testAudioPath() {
+            // Test if file exists using fetch
+            fetch('assets/songs/ncs/song.mp3')
+                .then(response => {
+                    if (response.ok) {
+                        pathDisplay.innerHTML += '<div style="color: green">File exists!</div>';
+                    } else {
+                        pathDisplay.innerHTML += '<div style="color: red">File not found!</div>';
+                    }
+                })
+                .catch(error => {
+                    pathDisplay.innerHTML += `<div style="color: red">Error checking file: ${error}</div>`;
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Sample FORM using POST</title>
+</head>
+<body>
+    <h1>A Sample FORM using POST</h1>
+    <form action="submit" method="POST">
+        <label for="item-number">Item Number:</label>
+        <input type="text" id="item-number" name="item-number"><br><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity"><br><br>
+
+        <label for="price-each">Price Each:</label>
+        <input type="text" id="price-each" name="price-each"><br><br>
+
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name"><br><br>
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name"><br><br>
+
+        <label for="middle-initial">Middle Initial:</label>
+        <input type="text" id="middle-initial" name="middle-initial"><br><br>
+
+        <label for="shipping-address">Shipping Address:</label><br>
+        <textarea id="shipping-address" name="shipping-address" rows="4" cols="50"></textarea><br><br>
+
+        <p>Credit Card:</p>
+        <input type="radio" id="visa" name="credit-card" value="Visa" checked>
+        <label for="visa">Visa</label><br>
+        <input type="radio" id="mastercard" name="credit-card" value="Master Card">
+        <label for="mastercard">Master Card</label><br>
+        <input type="radio" id="amex" name="credit-card" value="American Express">
+        <label for="amex">American Express</label><br>
+        <input type="radio" id="discover" name="credit-card" value="Discover">
+        <label for="discover">Discover</label><br>
+        <input type="radio" id="java-smartcard" name="credit-card" value="Java SmartCard">
+        <label for="java-smartcard">Java SmartCard</label><br><br>
+
+        <label for="credit-card-number">Credit Card Number:</label>
+        <input type="password" id="credit-card-number" name="credit-card-number"><br><br>
+
+        <label for="repeat-credit-card-number">Repeat Credit Card Number:</label>
+        <input type="password" id="repeat-credit-card-number" name="repeat-credit-card-number"><br><br>
+
+        <button type="submit">Submit Order</button>
+    </form>
+</body>
+</html>
